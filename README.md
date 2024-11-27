@@ -12,3 +12,6 @@ Libs
 ==================
 
 🚧
+
+Retrofit : utilisé pour faire de la communication réseau en envoyant des requêtes HTTP et en gérant les réponses 
+Hilt : utilisé pour faire de l'injection de dépendence et rendre ainsi le code plus modulaire, plus propre et plus facilement testable et maintenable

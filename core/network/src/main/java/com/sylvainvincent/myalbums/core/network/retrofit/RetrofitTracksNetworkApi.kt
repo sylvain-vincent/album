@@ -1,6 +1,6 @@
-package com.sylvainvincent.core.network.retrofit
+package com.sylvainvincent.myalbums.core.network.retrofit
 
-import com.sylvainvincent.core.network.model.TrackResponse
+import com.sylvainvincent.myalbums.core.network.model.TrackResponse
 import retrofit2.http.GET
 
 interface RetrofitTracksNetworkApi {

@@ -7,7 +7,8 @@ plugins {
 }
 
 android {
-    namespace = "com.sylvainvincent.core.network"
+    namespace = "com.sylvainvincent.myalbums.core.network"
+    compileSdk = 34
 
     buildTypes {
         release {

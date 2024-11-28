@@ -1,6 +1,6 @@
-package com.sylvainvincent.core.network.di
+package com.sylvainvincent.myalbums.core.network.di
 
-import com.sylvainvincent.core.network.retrofit.RetrofitTracksNetworkApi
+import com.sylvainvincent.myalbums.core.network.retrofit.RetrofitTracksNetworkApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

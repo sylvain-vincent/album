@@ -1,4 +1,4 @@
-package com.sylvainvincent.core.network.model
+package com.sylvainvincent.myalbums.core.network.model
 
 import kotlinx.serialization.Serializable
 

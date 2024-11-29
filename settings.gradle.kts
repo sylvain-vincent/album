@@ -21,5 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "My albums"
 include(":app")
-include(":core")
+include(":core:data")
+include(":core:domain")
 include(":core:network")
+include(":feature:tracks")

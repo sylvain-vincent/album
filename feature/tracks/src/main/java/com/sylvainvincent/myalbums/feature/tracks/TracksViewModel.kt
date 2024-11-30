@@ -14,7 +14,12 @@ class TracksViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            getTracksUseCase.invoke()
+            println("Just for testing")
+            getTracksUseCase.invoke().collect {
+                it.forEach {
+                    println("Test : $it")
+                }
+            }
         }
     }
 

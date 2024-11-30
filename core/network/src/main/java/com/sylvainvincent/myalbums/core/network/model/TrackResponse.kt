@@ -16,5 +16,6 @@ fun TrackResponse.toTrack() = Track(
     id = this.id,
     title = this.title,
     coverUrl = this.url,
+    thumbnailUrl = this.thumbnailUrl,
 )
 

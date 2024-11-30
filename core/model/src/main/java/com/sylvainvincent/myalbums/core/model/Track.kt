@@ -4,4 +4,5 @@ data class Track(
     val id: Int,
     val title: String,
     val coverUrl: String,
+    val thumbnailUrl: String,
 )

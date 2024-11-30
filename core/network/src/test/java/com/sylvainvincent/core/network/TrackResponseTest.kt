@@ -21,7 +21,8 @@ class TrackResponseTest {
         val track = Track(
             id = 5121,
             title = "agam",
-            coverUrl = "https://www.google.com/#q=cetero"
+            coverUrl = "https://www.google.com/#q=cetero",
+            thumbnailUrl = "https://duckduckgo.com/?q=conceptam"
         )
         assertEquals(expected = track, actual = trackResponse)
     }

@@ -1,5 +1,7 @@
 package com.sylvainvincent.myalbums.core.data.repository
 
+import com.sylvainvincent.myalbums.core.model.Track
+
 interface TracksRepository {
-    fun fetchTracks()
+    suspend fun fetchTracks(): List<Track>
 }

@@ -1,13 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.hilt)
-    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.sylvainvincent.myalbums.core.network"
+    namespace = "com.sylvainvincent.myalbums.core.model"
     compileSdk = 34
 
     defaultConfig {
@@ -26,7 +23,6 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -38,15 +34,6 @@ android {
 
 dependencies {
 
-    implementation(project(":core:model"))
-
     implementation(libs.androidx.core.ktx)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.kotlin.serialization)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.hilt.android)
     testImplementation(libs.junit)
-    testImplementation(libs.kotlin.test)
-    kapt(libs.hilt.compiler)
-    implementation(libs.okhttp)
 }

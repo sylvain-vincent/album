@@ -21,8 +21,8 @@ class TracksRepositoryImpl @Inject constructor(
         return flow { emit(tracksNetworkApi.fetchTracks().map(TrackResponse::toTrack)) }
     }
 
-    override suspend fun saveTracks(trackList: List<Track>) {
-        trackDao.upsertTracks(trackList.map(Track::toTrackEntity))
+    override suspend fun saveTracks(trackList: List<Track>) : Boolean {
+        return trackDao.insertTracks(trackList.map(Track::toTrackEntity)).isNotEmpty()
     }
 
     override suspend fun getLocalTracks(): Flow<List<Track>> {

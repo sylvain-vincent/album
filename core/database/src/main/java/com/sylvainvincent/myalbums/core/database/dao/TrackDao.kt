@@ -1,8 +1,9 @@
 package com.sylvainvincent.myalbums.core.database.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Upsert
 import com.sylvainvincent.myalbums.core.database.model.TrackEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -26,6 +27,6 @@ interface TrackDao {
     )
     fun getTracksEntity(): Flow<List<TrackEntity>>
 
-    @Upsert
-    suspend fun upsertTracks(entities: List<TrackEntity>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTracks(entities: List<TrackEntity>) : List<Long>
 }

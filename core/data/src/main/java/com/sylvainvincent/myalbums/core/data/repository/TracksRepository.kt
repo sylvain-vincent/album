@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface TracksRepository {
     suspend fun fetchTracks(): Flow<List<Track>>
-    suspend fun saveTracks(trackList: List<Track>)
+    suspend fun saveTracks(trackList: List<Track>): Boolean
     suspend fun getLocalTracks(): Flow<List<Track>>
 }

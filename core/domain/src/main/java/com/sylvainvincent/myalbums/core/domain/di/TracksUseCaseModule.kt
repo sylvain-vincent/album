@@ -1,11 +1,11 @@
 package com.sylvainvincent.myalbums.core.domain.di
 
-import com.sylvainvincent.myalbums.core.domain.GetLocalTracks
-import com.sylvainvincent.myalbums.core.domain.GetLocalTracksImpl
-import com.sylvainvincent.myalbums.core.domain.GetTracksUseCaseImpl
-import com.sylvainvincent.myalbums.core.domain.GetTracksUseCase
-import com.sylvainvincent.myalbums.core.domain.SaveTracks
-import com.sylvainvincent.myalbums.core.domain.SaveTracksImpl
+import com.sylvainvincent.myalbums.core.domain.GetLocalTracksUseCase
+import com.sylvainvincent.myalbums.core.domain.GetLocalTracksUseCaseImpl
+import com.sylvainvincent.myalbums.core.domain.FetchTracksUseCaseImpl
+import com.sylvainvincent.myalbums.core.domain.FetchTracksUseCase
+import com.sylvainvincent.myalbums.core.domain.SaveTracksUseCase
+import com.sylvainvincent.myalbums.core.domain.SaveTracksUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,11 +16,11 @@ import dagger.hilt.components.SingletonComponent
 interface TracksUseCaseModule {
 
     @Binds
-    fun bindsGetTracksUseCase(implem : GetTracksUseCaseImpl) : GetTracksUseCase
+    fun bindsGetTracksUseCase(implem : FetchTracksUseCaseImpl) : FetchTracksUseCase
 
     @Binds
-    fun bindsGetLocalTracks(implem : GetLocalTracksImpl) : GetLocalTracks
+    fun bindsGetLocalTracks(implem : GetLocalTracksUseCaseImpl) : GetLocalTracksUseCase
 
     @Binds
-    fun bindsSaveTracks(implem : SaveTracksImpl) : SaveTracks
+    fun bindsSaveTracks(implem : SaveTracksUseCaseImpl) : SaveTracksUseCase
 }

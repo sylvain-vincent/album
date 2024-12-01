@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.sylvainvincent.myalbums.feature.tracks.TracksScreenStateful
 import com.sylvainvincent.myalbums.ui.theme.MyAlbumsTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,12 +23,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyAlbumsTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                    TracksScreenStateful()
+                Scaffold(modifier = Modifier.fillMaxSize().padding(12.dp)) { innerPadding ->
+                    TracksScreenStateful(innerPaddingValues = innerPadding)
                 }
             }
         }

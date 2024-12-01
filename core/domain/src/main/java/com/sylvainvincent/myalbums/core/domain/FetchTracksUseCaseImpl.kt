@@ -5,8 +5,8 @@ import com.sylvainvincent.myalbums.core.model.Track
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetLocalTracksImpl @Inject constructor(private val tracksRepository: TracksRepository) : GetLocalTracks {
-    override suspend fun invoke(): Flow<List<Track>> {
-        return tracksRepository.getLocalTracks()
-    }
+class FetchTracksUseCaseImpl @Inject constructor(private val tracksRepository: TracksRepository) :
+    FetchTracksUseCase {
+
+    override suspend fun invoke() : Flow<List<Track>> = tracksRepository.fetchTracks()
 }

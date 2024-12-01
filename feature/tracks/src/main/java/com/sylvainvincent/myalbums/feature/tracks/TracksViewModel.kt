@@ -29,7 +29,7 @@ class TracksViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             _trackState.emit(TracksState.Loading)
-            delay(3000)
+            delay(4000)
             getLocalTracksUseCase.invoke().collect { trackList ->
                 _trackState.emit(TracksState.Loaded(trackList))
             }
@@ -42,11 +42,11 @@ class TracksViewModel @Inject constructor(
 
     suspend fun fetchTracks() {
         _trackNetworkState.emit(NetworkTracksState.Loading)
-        delay(3000)
+        delay(4000)
         fetchTracksUseCase.invoke().collect { trackList ->
             val successfullySaved = saveTracksUseCase(trackList = trackList)
             if(successfullySaved) _trackNetworkState.emit(NetworkTracksState.Success)
-            else _trackNetworkState.emit(NetworkTracksState.NoUpdate)
+            else _trackNetworkState.emit(NetworkTracksState.Error)
         }
     }
 }
@@ -55,7 +55,6 @@ sealed class NetworkTracksState {
     data object Empty : NetworkTracksState()
     data object Loading : NetworkTracksState()
     data object Success : NetworkTracksState()
-    data object NoUpdate : NetworkTracksState()
     data object Error : NetworkTracksState()
 }
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="track_network_synchro_error">An error occurs during synchronization</string>
+    <string name="track_network_synchro_loading">Synchronization in progress</string>
+    <string name="track_network_synchro_success">Synchronization done</string>
+</resources>

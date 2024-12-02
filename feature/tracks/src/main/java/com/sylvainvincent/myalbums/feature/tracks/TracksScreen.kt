@@ -24,12 +24,13 @@ fun TracksScreenStateful(
     innerPaddingValues: PaddingValues,
     snackbarHostState: SnackbarHostState,
 ) {
-
     val tracksState = viewModel.trackState.collectAsState()
     val networkTracksState = viewModel.trackNetworkState.collectAsState()
+
     val networkLoadingMessage = stringResource(R.string.track_network_synchro_loading)
     val networkErrorMessage = stringResource(R.string.track_network_synchro_error)
     val networkSuccessMessage = stringResource(R.string.track_network_synchro_success)
+    val networkOfflineMessage = stringResource(R.string.track_network_offline)
 
     // todo implement a pull to refresh
 
@@ -45,6 +46,10 @@ fun TracksScreenStateful(
 
             NetworkTracksState.Success -> {
                 snackbarHostState.showSnackbar(networkSuccessMessage)
+            }
+
+            NetworkTracksState.NoNetworkError -> {
+                snackbarHostState.showSnackbar(networkOfflineMessage)
             }
 
             else -> {

@@ -17,7 +17,7 @@ import javax.inject.Inject
 class TracksViewModel @Inject constructor(
     private val fetchTracksUseCase: FetchTracksUseCase,
     private val saveTracksUseCase: SaveTracksUseCase,
-    getLocalTracksUseCase: GetLocalTracksUseCase,
+    private val getLocalTracksUseCase: GetLocalTracksUseCase,
 ) : ViewModel() {
 
     private val _trackState = MutableStateFlow<TracksState>(TracksState.Empty)
@@ -43,10 +43,23 @@ class TracksViewModel @Inject constructor(
     suspend fun fetchTracks() {
         _trackNetworkState.emit(NetworkTracksState.Loading)
         delay(4000)
-        fetchTracksUseCase.invoke().collect { trackList ->
-            val successfullySaved = saveTracksUseCase(trackList = trackList)
-            if(successfullySaved) _trackNetworkState.emit(NetworkTracksState.Success)
-            else _trackNetworkState.emit(NetworkTracksState.Error)
+        fetchTracksUseCase.invoke()
+            .onSuccess { trackList ->
+                val successfullySaved = saveTracksUseCase(trackList = trackList)
+                if (successfullySaved) _trackNetworkState.emit(NetworkTracksState.Success)
+                else _trackNetworkState.emit(NetworkTracksState.Error)
+            }.onFailure { error ->
+                // todo handle error here
+                println("TESTO error ${error.message}")
+                _trackNetworkState.emit(NetworkTracksState.NoNetworkError)
+            }
+    }
+
+    suspend fun fetchLocalTracks() {
+        _trackState.emit(TracksState.Loading)
+        delay(4000)
+        getLocalTracksUseCase.invoke().collect { trackList ->
+            _trackState.emit(TracksState.Loaded(trackList))
         }
     }
 }
@@ -56,6 +69,7 @@ sealed class NetworkTracksState {
     data object Loading : NetworkTracksState()
     data object Success : NetworkTracksState()
     data object Error : NetworkTracksState()
+    data object NoNetworkError : NetworkTracksState()
 }
 
 sealed class TracksState {

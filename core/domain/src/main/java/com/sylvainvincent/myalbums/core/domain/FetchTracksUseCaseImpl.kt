@@ -8,5 +8,5 @@ import javax.inject.Inject
 class FetchTracksUseCaseImpl @Inject constructor(private val tracksRepository: TracksRepository) :
     FetchTracksUseCase {
 
-    override suspend fun invoke() : Flow<List<Track>> = tracksRepository.fetchTracks()
+    override suspend fun invoke() : Result<List<Track>> = tracksRepository.fetchTracks()
 }

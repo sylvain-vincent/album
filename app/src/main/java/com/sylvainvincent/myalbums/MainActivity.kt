@@ -15,7 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.sylvainvincent.myalbums.feature.tracks.TracksScreenStateful
+import com.sylvainvincent.myalbums.feature.tracks.view.TracksScreenStateful
 import com.sylvainvincent.myalbums.ui.theme.MyAlbumsTheme
 import dagger.hilt.android.AndroidEntryPoint
 

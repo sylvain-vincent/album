@@ -42,12 +42,15 @@ dependencies {
 
     implementation(project(":core:domain"))
     implementation(project(":core:model"))
+    implementation(project(":core:common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.material3)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.coil.kt)
+    implementation(libs.coil.kt.okhttp)
     debugImplementation(libs.androidx.ui.tooling.preview)
     kapt(libs.hilt.compiler)
     testImplementation(libs.junit)

@@ -2,7 +2,6 @@ package com.sylvainvincent.myalbums.core.network.di
 
 import android.content.Context
 import com.sylvainvincent.myalbums.core.network.NetworkConnectionInterceptor
-import com.sylvainvincent.myalbums.core.network.model.TrackResponse
 import com.sylvainvincent.myalbums.core.network.retrofit.RetrofitTracksNetworkApi
 import dagger.Module
 import dagger.Provides

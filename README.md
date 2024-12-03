@@ -31,11 +31,13 @@ Libs
 
 🚧
 
+* **Coroutines** : utilisé pour écrire du code asynchrone et non bloquant de manière simple et lisible
 * **Retrofit** : utilisé pour faire de la communication réseau en envoyant des requêtes HTTP et en gérant les réponses 
 * **Hilt** : utilisé pour faire de l'injection de dépendence et rendre ainsi le code plus modulaire, plus propre et plus facilement testable et maintenable
 * **Room** : utilisé pour garder des données structurés en local dans une base de donnée, utile pour utiliser l'app en mode offline
 * **Compose** : utilisé pour créer des interfaces utilisateur déclaratives, avec ça on peut faire produire moins de code pour faire de l'UI, avoir de meilleurs perfs, avoir une preview par state, écrire en kotlin, etc.
 * **kotlinx-serialization-json** : utilisé pour sérialiser et désérialiser des données en JSON 
+* **koil** : utilisé pour charger et afficher des images de façon optimal avec l'aide de coroutines
 
 Plugins 
 ==================

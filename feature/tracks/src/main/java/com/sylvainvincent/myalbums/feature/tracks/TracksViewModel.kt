@@ -1,14 +1,16 @@
 package com.sylvainvincent.myalbums.feature.tracks
 
-import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sylvainvincent.myalbums.core.domain.tracks.FetchTracksUseCase
-import com.sylvainvincent.myalbums.core.model.Track
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,27 +22,25 @@ class TracksViewModel @Inject constructor(
     private val _trackState = MutableStateFlow<TracksState>(TracksState.Empty)
     val trackState = _trackState.asStateFlow()
 
+    private val _event = Channel<Event>()
+    val event = _event
+        .receiveAsFlow()
+        .stateIn(viewModelScope, SharingStarted.Eagerly, Event.UNINITIALISED)
+
     init {
         fetchTracks()
     }
 
     fun fetchTracks() {
         viewModelScope.launch {
-            _trackState.emit(TracksState.Loading)
-            delay(4000)
+            _event.send(Event.LOADING)
             fetchTracksUseCase.invoke()
                 .onSuccess { trackList ->
-                    _trackState.emit(TracksState.Loaded(trackList))
+                    _trackState.update { TracksState.Loaded(trackList) }
+                    _event.send(Event.FETCH_SUCCESSFUL)
                 }.onFailure { _ ->
-                    _trackState.emit(TracksState.Error)
+                    _event.send(Event.ERROR)
                 }
         }
     }
-}
-
-sealed class TracksState {
-    data object Empty : TracksState()
-    data object Loading : TracksState()
-    data class Loaded(val trackList: List<Track>) : TracksState()
-    data object Error : TracksState()
 }

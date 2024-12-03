@@ -17,6 +17,7 @@ Le but étant de séparer le code en plusieurs couches pour afin d'avoir une sé
 
 * `:app` : Point de départ de l'app, c'est ici qu'on va gérer les thèmes, la navigation, etc.
 * `:core` : Module parent où se trouve plusieurs modules qui font partie, pour la plupart, de la couche domaine et data de la clean archi 
+* `:core:common` : Regroupe des classes partagées entre les différents modules
 * `:core:data` : C'est ici qu'on va récupérer des données de divers sources comme depuis database et network
 * `:core:database` : Module destiné à la gestion de la base de données pour les données qu'on veut garder en local
 * `:core:domain` : Module regroupant tous les usecases de l'app (ex : GetTracksUseCase.kt)

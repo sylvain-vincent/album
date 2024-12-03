@@ -14,18 +14,9 @@ interface TrackDao {
         value =
         """
         SELECT * FROM track
-        WHERE id = :trackId
         """,
     )
-    fun getTrackEntity(trackId: String): Flow<TrackEntity>
-
-    @Query(
-        value =
-        """
-        SELECT * FROM track
-        """,
-    )
-    fun getTracksEntity(): Flow<List<TrackEntity>>
+    fun getTracksEntity(): List<TrackEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTracks(entities: List<TrackEntity>) : List<Long>

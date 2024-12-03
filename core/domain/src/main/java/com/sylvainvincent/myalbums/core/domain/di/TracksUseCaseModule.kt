@@ -1,11 +1,7 @@
 package com.sylvainvincent.myalbums.core.domain.di
 
-import com.sylvainvincent.myalbums.core.domain.GetLocalTracksUseCase
-import com.sylvainvincent.myalbums.core.domain.GetLocalTracksUseCaseImpl
-import com.sylvainvincent.myalbums.core.domain.FetchTracksUseCaseImpl
-import com.sylvainvincent.myalbums.core.domain.FetchTracksUseCase
-import com.sylvainvincent.myalbums.core.domain.SaveTracksUseCase
-import com.sylvainvincent.myalbums.core.domain.SaveTracksUseCaseImpl
+import com.sylvainvincent.myalbums.core.domain.tracks.FetchTracksUseCaseImpl
+import com.sylvainvincent.myalbums.core.domain.tracks.FetchTracksUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,10 +13,4 @@ interface TracksUseCaseModule {
 
     @Binds
     fun bindsGetTracksUseCase(implem : FetchTracksUseCaseImpl) : FetchTracksUseCase
-
-    @Binds
-    fun bindsGetLocalTracks(implem : GetLocalTracksUseCaseImpl) : GetLocalTracksUseCase
-
-    @Binds
-    fun bindsSaveTracks(implem : SaveTracksUseCaseImpl) : SaveTracksUseCase
 }

@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface TracksUseCaseModule {
+internal interface TracksUseCaseModule {
 
     @Binds
     fun bindsGetTracksUseCase(implem : FetchTracksUseCaseImpl) : FetchTracksUseCase

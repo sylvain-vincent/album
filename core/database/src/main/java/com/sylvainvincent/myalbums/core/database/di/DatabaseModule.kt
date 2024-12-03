@@ -14,7 +14,7 @@ const val MY_ALBUMS_DATABASE_NAME = "my-album-database"
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
+internal object DatabaseModule {
 
     @Provides
     @Singleton

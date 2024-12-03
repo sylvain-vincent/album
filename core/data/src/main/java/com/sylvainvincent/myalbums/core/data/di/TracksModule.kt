@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface TracksModule {
+internal interface TracksModule {
 
     @Binds
     fun binds(implem: TracksRepositoryImpl): TracksRepository

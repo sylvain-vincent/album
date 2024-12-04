@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.net.ConnectivityManager
 import javax.inject.Inject
 
-class HaveInternetConnectionUseCaseImpl @Inject constructor(
+internal class HaveInternetConnectionUseCaseImpl @Inject constructor(
     private val connectivityManager: ConnectivityManager
 ): HaveInternetConnectionUseCase {
 

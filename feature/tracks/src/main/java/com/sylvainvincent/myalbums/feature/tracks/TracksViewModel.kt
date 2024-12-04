@@ -6,6 +6,7 @@ import com.sylvainvincent.myalbums.core.domain.tracks.FetchTracksUseCase
 import com.sylvainvincent.myalbums.core.domain.tracks.HaveInternetConnectionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -27,7 +28,7 @@ class TracksViewModel @Inject constructor(
     private val _event = Channel<Event>()
     val event = _event
         .receiveAsFlow()
-        .stateIn(viewModelScope, SharingStarted.Eagerly, Event.UNINITIALISED)
+        .stateIn(viewModelScope, SharingStarted.Lazily, Event.UNINITIALISED)
 
     init {
         fetchTracks()
@@ -38,6 +39,7 @@ class TracksViewModel @Inject constructor(
             _event.send(Event.LOADING)
             fetchTracksUseCase.invoke()
                 .onSuccess { trackList ->
+                    delay(timeMillis = 1000) // use a delay in order to avoid a rapid succession of 2 messages
                     _trackState.update { TracksState.Loaded(trackList) }
                     if(haveInternetConnectionUseCase()) {
                         _event.send(Event.FETCH_SUCCESSFUL)

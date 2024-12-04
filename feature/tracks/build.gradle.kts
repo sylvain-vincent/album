@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.okhttp)
     debugImplementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(libs.androidx.ui.tooling)
     kapt(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

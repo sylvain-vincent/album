@@ -20,9 +20,10 @@ class TrackResponseTest {
 
         val track = Track(
             id = 5121,
+            albumId = 9123,
             title = "agam",
             coverUrl = "https://www.google.com/#q=cetero",
-            thumbnailUrl = "https://duckduckgo.com/?q=conceptam"
+            thumbnailUrl = "https://duckduckgo.com/?q=conceptam",
         )
         assertEquals(expected = track, actual = trackResponse)
     }

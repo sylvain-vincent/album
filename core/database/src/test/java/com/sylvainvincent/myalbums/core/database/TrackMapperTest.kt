@@ -13,6 +13,7 @@ class TrackMapperTest {
     fun `given TrackEntity when toTrack then return Track`() {
         val trackResponse = TrackEntity(
             id = 5121,
+            albumId = 1129,
             title = "agam",
             coverUrl = "https://www.google.com/#q=cetero",
             thumbnailUrl = "https://duckduckgo.com/?q=conceptam"
@@ -20,6 +21,7 @@ class TrackMapperTest {
 
         val track = Track(
             id = 5121,
+            albumId = 1129,
             title = "agam",
             coverUrl = "https://www.google.com/#q=cetero",
             thumbnailUrl = "https://duckduckgo.com/?q=conceptam"
@@ -32,6 +34,7 @@ class TrackMapperTest {
 
         val track = Track(
             id = 5121,
+            albumId = 6129,
             title = "agam",
             coverUrl = "https://www.google.com/#q=cetero",
             thumbnailUrl = "https://duckduckgo.com/?q=conceptam"
@@ -39,6 +42,7 @@ class TrackMapperTest {
 
         val trackResponse = TrackEntity(
             id = 5121,
+            albumId = 6129,
             title = "agam",
             coverUrl = "https://www.google.com/#q=cetero",
             thumbnailUrl = "https://duckduckgo.com/?q=conceptam"

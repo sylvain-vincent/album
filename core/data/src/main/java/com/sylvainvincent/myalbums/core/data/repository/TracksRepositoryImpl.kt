@@ -14,7 +14,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class TracksRepositoryImpl @Inject constructor(
+internal class TracksRepositoryImpl @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     private val tracksNetworkApi: RetrofitTracksNetworkApi,
     private val trackDao: TrackDao,

@@ -5,4 +5,7 @@
     <string name="track_network_synchro_success">Synchronisation terminée</string>
     <string name="track_network_offline">Vous n\'etes pas connecté à internet</string>
 
+    <string name="track_screen_error">Oups an error occurred, please retry</string>
+    <string name="track_screen_welcome">Bienvenue</string>
+
 </resources>

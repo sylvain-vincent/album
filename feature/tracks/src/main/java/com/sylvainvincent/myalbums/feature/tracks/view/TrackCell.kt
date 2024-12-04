@@ -1,20 +1,17 @@
 package com.sylvainvincent.myalbums.feature.tracks.view
 
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -30,16 +27,11 @@ import com.sylvainvincent.myalbums.core.common.getSystemUserAgent
 
 @Composable
 fun TrackCell(trackTitle: String, thumbnailUrl: String) {
-    Card(colors = CardColors(
-        contentColor = Color.Black,
-        containerColor = Color.LightGray,
-        disabledContainerColor = Color.Gray,
-        disabledContentColor = Color.Black,
-    )) {
+    Card {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(6.dp),
+                .padding(10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             AsyncImage(
@@ -49,12 +41,13 @@ fun TrackCell(trackTitle: String, thumbnailUrl: String) {
                 error = painterResource(android.R.drawable.stat_notify_error),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(60.dp)
+                    .size(80.dp)
                     .clip(RoundedCornerShape(12.dp)),
             )
             Text(
-                modifier = Modifier.padding(horizontal = 8.dp),
+                modifier = Modifier.padding(horizontal = 10.dp),
                 text = trackTitle,
+                color = MaterialTheme.colorScheme.onSurface,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 2,
             )

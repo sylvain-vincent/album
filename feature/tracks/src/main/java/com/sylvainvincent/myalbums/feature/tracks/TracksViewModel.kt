@@ -39,6 +39,7 @@ class TracksViewModel @Inject constructor(
                     _trackState.update { TracksState.Loaded(trackList) }
                     _event.send(Event.FETCH_SUCCESSFUL)
                 }.onFailure { _ ->
+                    _trackState.update { TracksState.Error }
                     _event.send(Event.ERROR)
                 }
         }

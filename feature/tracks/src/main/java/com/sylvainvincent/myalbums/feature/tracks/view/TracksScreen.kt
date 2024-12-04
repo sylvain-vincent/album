@@ -1,10 +1,11 @@
 package com.sylvainvincent.myalbums.feature.tracks.view
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -76,17 +77,29 @@ fun TracksScreenStateful(
             modifier = Modifier
                 .padding(innerPaddingValues)
                 .fillMaxSize()
-                .padding(horizontal = 6.dp)
-                .padding(top = 12.dp, bottom = 6.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(horizontal = 20.dp, vertical = 6.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
         ) {
-            if (tracksState is TracksState.Loaded) {
-                items(items = tracksState.trackList) { track ->
-                    TrackCell(trackTitle = track.title, thumbnailUrl = track.thumbnailUrl)
-                    Spacer(modifier = Modifier.size(6.dp))
+            when (tracksState) {
+                is TracksState.Loaded -> {
+                    items(items = tracksState.trackList) { track ->
+                        TrackCell(trackTitle = track.title, thumbnailUrl = track.thumbnailUrl)
+                        Spacer(modifier = Modifier.height(10.dp))
+                    }
                 }
-            } else {
-                item { Text("Track list Empty") }
+
+                is TracksState.Error -> {
+                    item {
+                        Text(stringResource(R.string.track_screen_error))
+                    }
+                }
+
+                else -> {
+                    item {
+                        Text(stringResource(R.string.track_screen_welcome))
+                    }
+                }
             }
         }
     }

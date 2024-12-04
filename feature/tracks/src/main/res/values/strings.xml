@@ -4,4 +4,8 @@
     <string name="track_network_synchro_loading">Synchronization in progress</string>
     <string name="track_network_synchro_success">Synchronization done</string>
     <string name="track_network_offline">You are not connected to the internet</string>
+
+    <string name="track_screen_error">Oups an error occurred, please retry</string>
+    <string name="track_screen_welcome">Welcome</string>
+
 </resources>

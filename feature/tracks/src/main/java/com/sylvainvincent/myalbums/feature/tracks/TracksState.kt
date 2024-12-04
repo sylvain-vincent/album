@@ -12,5 +12,6 @@ enum class Event {
     UNINITIALISED,
     LOADING,
     ERROR,
-    FETCH_SUCCESSFUL
+    FETCH_SUCCESSFUL,
+    NO_INTERNET,
 }

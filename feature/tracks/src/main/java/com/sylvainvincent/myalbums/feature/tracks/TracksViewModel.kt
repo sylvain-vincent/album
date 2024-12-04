@@ -3,6 +3,7 @@ package com.sylvainvincent.myalbums.feature.tracks
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sylvainvincent.myalbums.core.domain.tracks.FetchTracksUseCase
+import com.sylvainvincent.myalbums.core.domain.tracks.HaveInternetConnectionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TracksViewModel @Inject constructor(
     private val fetchTracksUseCase: FetchTracksUseCase,
+    private val haveInternetConnectionUseCase: HaveInternetConnectionUseCase
 ) : ViewModel() {
 
     private val _trackState = MutableStateFlow<TracksState>(TracksState.Empty)
@@ -37,7 +39,11 @@ class TracksViewModel @Inject constructor(
             fetchTracksUseCase.invoke()
                 .onSuccess { trackList ->
                     _trackState.update { TracksState.Loaded(trackList) }
-                    _event.send(Event.FETCH_SUCCESSFUL)
+                    if(haveInternetConnectionUseCase()) {
+                        _event.send(Event.FETCH_SUCCESSFUL)
+                    } else {
+                        _event.send(Event.NO_INTERNET)
+                    }
                 }.onFailure { _ ->
                     _trackState.update { TracksState.Error }
                     _event.send(Event.ERROR)

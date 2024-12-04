@@ -41,7 +41,7 @@ fun TracksScreenStateful(
     val fetchOngoingMessage = stringResource(R.string.track_network_synchro_loading)
     val fetchErrorMessage = stringResource(R.string.track_network_synchro_error)
     val fetchSuccessMessage = stringResource(R.string.track_network_synchro_success)
-    // val networkOfflineMessage = stringResource(R.string.track_network_offline)
+    val networkOfflineMessage = stringResource(R.string.track_network_offline)
 
     var isRefreshing by remember { mutableStateOf(false) }
 
@@ -63,6 +63,10 @@ fun TracksScreenStateful(
             Event.FETCH_SUCCESSFUL -> {
                 isRefreshing = false
                 snackbarHostState.showSnackbar(fetchSuccessMessage)
+            }
+            Event.NO_INTERNET -> {
+                isRefreshing = false
+                snackbarHostState.showSnackbar(networkOfflineMessage)
             }
         }
     }

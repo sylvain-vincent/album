@@ -3,7 +3,7 @@
     <string name="track_network_synchro_error">An error occurs during synchronization</string>
     <string name="track_network_synchro_loading">Synchronization in progress</string>
     <string name="track_network_synchro_success">Synchronization done</string>
-    <string name="track_network_offline">You are not connected to the internet</string>
+    <string name="track_network_offline">No internet connection, you go into offline mode</string>
 
     <string name="track_screen_error">Oups an error occurred, please retry</string>
     <string name="track_screen_welcome">Welcome</string>

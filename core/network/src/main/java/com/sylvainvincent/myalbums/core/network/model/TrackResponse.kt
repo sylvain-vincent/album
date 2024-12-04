@@ -4,7 +4,7 @@ import com.sylvainvincent.myalbums.core.model.Track
 import kotlinx.serialization.Serializable
 
 @Serializable
-class TrackResponse (
+class TrackResponse(
     val id: Int,
     val albumId: Int,
     val title: String,
@@ -14,8 +14,8 @@ class TrackResponse (
 
 fun TrackResponse.toTrack() = Track(
     id = this.id,
+    albumId = this.albumId,
     title = this.title,
     coverUrl = this.url,
     thumbnailUrl = this.thumbnailUrl,
 )
-

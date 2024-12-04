@@ -9,6 +9,7 @@ import com.sylvainvincent.myalbums.core.model.Track
 data class TrackEntity(
     @PrimaryKey
     val id: Int,
+    val albumId: Int,
     val title: String,
     @ColumnInfo(defaultValue = "")
     val coverUrl: String,
@@ -18,6 +19,7 @@ data class TrackEntity(
 
 fun TrackEntity.toTrack() = Track(
     id = this.id,
+    albumId = this.albumId,
     title = this.title,
     coverUrl = this.coverUrl,
     thumbnailUrl = this.thumbnailUrl
@@ -25,6 +27,7 @@ fun TrackEntity.toTrack() = Track(
 
 fun Track.toTrackEntity() = TrackEntity(
     id = this.id,
+    albumId = this.albumId,
     title = this.title,
     coverUrl = this.coverUrl,
     thumbnailUrl = this.thumbnailUrl

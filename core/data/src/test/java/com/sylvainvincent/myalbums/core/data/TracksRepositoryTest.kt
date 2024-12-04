@@ -42,6 +42,7 @@ class TracksRepositoryTest {
 
         val track = Track(
             id = 7314,
+            albumId = 3932,
             title = "class",
             coverUrl = "https://www.google.com/#q=verear",
             thumbnailUrl = "https://search.yahoo.com/search?p=congue"
@@ -65,6 +66,7 @@ class TracksRepositoryTest {
 
         val trackResponse = TrackEntity(
             id = 6318,
+            albumId = 4322,
             title = "noster",
             coverUrl = "https://duckduckgo.com/?q=civibus",
             thumbnailUrl = "https://www.google.com/#q=vivendo"
@@ -72,6 +74,7 @@ class TracksRepositoryTest {
 
         val track = Track(
             id = 6318,
+            albumId = 4322,
             title = "noster",
             coverUrl = "https://duckduckgo.com/?q=civibus",
             thumbnailUrl = "https://www.google.com/#q=vivendo"
@@ -95,6 +98,7 @@ class TracksRepositoryTest {
 
         val trackResponse = TrackEntity(
             id = 6318,
+            albumId = 6220,
             title = "noster",
             coverUrl = "https://duckduckgo.com/?q=civibus",
             thumbnailUrl = "https://www.google.com/#q=vivendo"

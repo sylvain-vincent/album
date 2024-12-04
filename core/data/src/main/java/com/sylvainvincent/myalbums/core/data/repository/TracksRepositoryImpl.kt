@@ -1,10 +1,10 @@
 package com.sylvainvincent.myalbums.core.data.repository
 
 import com.sylvainvincent.myalbums.core.common.IoDispatcher
-import com.sylvainvincent.myalbums.core.data.toTrackEntity
 import com.sylvainvincent.myalbums.core.database.dao.TrackDao
 import com.sylvainvincent.myalbums.core.database.model.TrackEntity
 import com.sylvainvincent.myalbums.core.database.model.toTrack
+import com.sylvainvincent.myalbums.core.database.model.toTrackEntity
 import com.sylvainvincent.myalbums.core.model.Track
 import com.sylvainvincent.myalbums.core.network.exception.NoNetworkException
 import com.sylvainvincent.myalbums.core.network.model.TrackResponse
@@ -23,10 +23,11 @@ internal class TracksRepositoryImpl @Inject constructor(
     override suspend fun fetchTracks(): Result<List<Track>> {
         return try {
             val result = tracksNetworkApi.fetchTracks()
+            val trackList = result.map(TrackResponse::toTrack)
             withContext(ioDispatcher) {
-                trackDao.insertTracks(result.map(TrackResponse::toTrackEntity))
+                trackDao.insertTracks(trackList.map(Track::toTrackEntity))
             }
-            Result.success(result.map(TrackResponse::toTrack))
+            Result.success(trackList)
         } catch (e: Exception) {
             if(e is NoNetworkException) {
                 val localTrackList = withContext(ioDispatcher) {

@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.sylvainvincent.myalbums.core.data"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
